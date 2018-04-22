@@ -1,0 +1,26 @@
+Lillian González Albino
+First and Follow sets of grammar G
+Note: epsilon will be denoted as \epsilon
+
+G:
+	Prog -> { Stms }
+	Stms -> Stm Stms
+	Stms -> \epsilon
+	Stm -> id = Expr ;
+	Stm -> if ( Expr ) Stm
+	Expr -> id Etail
+	Etail -> + Expr
+	Etail -> - Expr
+	Etail -> \epsilon
+
+First( Prog ) = { { }
+First( Stms ) = { \epsilon , if , id }
+First( Stm ) = { if , id }
+First( Expr ) = { id }
+First( Etail ) = { \epsilon , - , + }
+
+Follow( Prog ) = { $ }
+Follow( Stms ) = { } }
+Follow( Stm ) = { } } U First( Stm ) = { } , if , id }
+Follow( Expr ) = { ; , ) }
+Follow( Etail ) = Follow( Expr ) = { ; , ) }
